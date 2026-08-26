@@ -1,0 +1,206 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ------------------------------------------------------------------
+   Design tokens. Channels are space-separated RGB so Tailwind can
+   apply opacity modifiers (e.g. bg-surface/60).
+------------------------------------------------------------------- */
+@layer base {
+  :root {
+    --bg: 250 251 253;
+    --surface: 255 255 255;
+    --elevated: 244 247 251;
+    --line: 226 232 240;
+    --ink: 12 17 26;
+    --muted: 79 90 112;
+    --faint: 122 133 153;
+    --accent: 37 84 214;
+    --accent2: 118 62 224;
+
+    --font-sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+
+    --glow-a: 37 84 214;
+    --glow-b: 118 62 224;
+    --glow-strength: 0.16;
+  }
+
+  .dark {
+    --bg: 8 10 15;
+    --surface: 15 18 26;
+    --elevated: 21 25 35;
+    --line: 33 39 52;
+    --ink: 232 236 244;
+    --muted: 154 165 186;
+    --faint: 116 127 148;
+    --accent: 122 162 255;
+    --accent2: 183 156 255;
+
+    --glow-a: 122 162 255;
+    --glow-b: 183 156 255;
+    --glow-strength: 0.22;
+  }
+
+  * {
+    border-color: rgb(var(--line));
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* keeps anchored sections clear of the fixed navbar */
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: rgb(var(--bg));
+    color: rgb(var(--ink));
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgb(var(--accent) / 0.25);
+    color: rgb(var(--ink));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--accent));
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Thin, theme-aware scrollbar (progressive enhancement only) */
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: rgb(var(--bg)); }
+  ::-webkit-scrollbar-thumb {
+    background: rgb(var(--line));
+    border-radius: 99px;
+    border: 2px solid rgb(var(--bg));
+  }
+  ::-webkit-scrollbar-thumb:hover { background: rgb(var(--faint)); }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-5 sm:px-8 lg:px-12;
+  }
+
+  /* Frosted panel used by the navbar and cards */
+  .glass {
+    background-color: rgb(var(--surface) / 0.72);
+    backdrop-filter: blur(16px) saturate(160%);
+    -webkit-backdrop-filter: blur(16px) saturate(160%);
+    border: 1px solid rgb(var(--line) / 0.9);
+  }
+
+  .card {
+    @apply relative rounded-2xl border border-line bg-surface p-6
+           transition-[transform,box-shadow,border-color] duration-500 ease-smooth;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-1.5 hover:border-accent/45
+           hover:shadow-[0_18px_48px_-18px_rgb(var(--accent)/0.45)];
+  }
+
+  .tag {
+    @apply inline-flex items-center rounded-full border border-line bg-elevated
+           px-2.5 py-1 font-mono text-[11px] leading-none tracking-tight text-muted
+           transition-colors duration-300;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3
+           text-sm font-semibold tracking-tight transition-all duration-300 ease-smooth
+           disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn text-white shadow-[0_10px_30px_-10px_rgb(var(--accent)/0.9)]
+           hover:-translate-y-0.5 hover:shadow-[0_16px_40px_-10px_rgb(var(--accent)/0.95)];
+    background-image: linear-gradient(
+      100deg,
+      rgb(var(--accent)),
+      rgb(var(--accent2)),
+      rgb(var(--accent))
+    );
+    background-size: 200% 100%;
+  }
+
+  .btn-ghost {
+    @apply btn border border-line bg-surface/60 text-ink
+           hover:-translate-y-0.5 hover:border-accent/50 hover:bg-elevated;
+  }
+
+  .section-label {
+    @apply mb-3 inline-flex items-center gap-2 font-mono text-xs uppercase
+           tracking-[0.24em] text-accent;
+  }
+
+  .section-title {
+    @apply text-balance text-3xl font-bold tracking-tight sm:text-4xl lg:text-[2.75rem] lg:leading-[1.1];
+  }
+
+  .gradient-text {
+    background-image: linear-gradient(
+      100deg,
+      rgb(var(--accent)),
+      rgb(var(--accent2)),
+      rgb(var(--accent))
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .text-pretty { text-wrap: pretty; }
+
+  /* Scroll reveal — see components/Reveal.tsx */
+  .reveal {
+    opacity: 0;
+    transform: translate3d(0, 26px, 0);
+    transition: opacity 0.75s cubic-bezier(0.22, 1, 0.36, 1),
+                transform 0.75s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, rgb(var(--line) / 0.55) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(var(--line) / 0.55) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 35%, transparent 78%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, #000 35%, transparent 78%);
+  }
+}
+
+/* Respect the OS "reduce motion" preference: kill all movement, keep content. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* Print: no JS-dependent decoration, plain readable document. */
+@media print {
+  .no-print { display: none !important; }
+  body { background: #fff; color: #000; }
+}

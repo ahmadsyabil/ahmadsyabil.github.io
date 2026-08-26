@@ -1,0 +1,12 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+  "files.associations": { "*.css": "tailwindcss" },
+  "css.lint.unknownAtRules": "ignore",
+  "tailwindCSS.experimental.classRegex": [
+    ["className=\"([^\"]*)", "([a-zA-Z0-9\\-:\\/\\[\\]\\.%]+)"]
+  ],
+  "search.exclude": { "**/node_modules": true, "**/.next": true, "**/out": true }
+}
