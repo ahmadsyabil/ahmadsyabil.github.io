@@ -1,4 +1,4 @@
-import { ArrowUp, Github, Linkedin, Mail } from 'lucide-react';
+import { ArrowUp, Github, Linkedin, Mail, MessageCircle } from 'lucide-react';
 import { navLinks, site } from '@/lib/data';
 
 export default function Footer() {
@@ -53,6 +53,15 @@ export default function Footer() {
               className="grid h-9 w-9 place-items-center rounded-full border border-line text-muted transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/50 hover:text-accent"
             >
               <Mail className="h-4 w-4" aria-hidden="true" />
+            </a>
+            <a
+              href={site.whatsapp.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Message me on WhatsApp, @${site.whatsapp.username}`}
+              className="grid h-9 w-9 place-items-center rounded-full border border-line text-muted transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/50 hover:text-accent"
+            >
+              <MessageCircle className="h-4 w-4" aria-hidden="true" />
             </a>
             <a
               href="#top"

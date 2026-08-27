@@ -7,7 +7,7 @@ export default function NotFound() {
         <p className="font-mono text-sm tracking-[0.3em] text-accent">404</p>
         <h1 className="mt-4 text-3xl font-bold tracking-tight sm:text-4xl">Page not found</h1>
         <p className="mx-auto mt-3 max-w-sm text-pretty text-muted">
-          That URL doesn&rsquo;t exist. Everything on this site lives on one page.
+          That page does not exist. Everything on this site lives on one page.
         </p>
         <Link href="/" className="btn-primary mt-8">
           Back to the portfolio

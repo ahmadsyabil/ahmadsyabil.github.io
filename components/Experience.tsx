@@ -27,7 +27,7 @@ export default function Experience() {
           id="experience-heading"
           label="Experience"
           title="The route so far."
-          description="Two internships totalling 38 weeks, a degree, a diploma, and a few things I picked up along the way."
+          description="Two internships that added up to 38 weeks. A degree and a diploma before that."
         />
 
         <ol className="relative mt-14 space-y-2">

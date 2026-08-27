@@ -1,7 +1,7 @@
-import { ArrowUpRight, Github, Linkedin, MapPin } from 'lucide-react';
+import { ArrowUpRight, Github, Linkedin, MapPin, MessageCircle } from 'lucide-react';
 import { site } from '@/lib/data';
 import ContactForm from './ContactForm';
-import CopyEmail from './CopyEmail';
+import CopyField from './CopyField';
 import Reveal from './Reveal';
 import SectionHeading from './SectionHeading';
 
@@ -35,12 +35,38 @@ export default function Contact() {
                 id="contact-heading"
                 label="Contact"
                 title="Let's build something worth shipping."
-                description="I'm open to full-time software engineering, data and graduate roles in Malaysia, and to remote work. The fastest way to reach me is email."
+                description="I am looking for full time software engineering and data roles in Malaysia. I am open to remote work too. Email is the fastest way to reach me."
               />
 
               <Reveal delay={160}>
-                <div className="mt-8">
-                  <CopyEmail />
+                <div className="mt-8 space-y-6">
+                  <div>
+                    <p className="mb-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-faint">
+                      Email
+                    </p>
+                    <CopyField
+                      value={site.email}
+                      href={`mailto:${site.email}`}
+                      label="email address"
+                    />
+                  </div>
+
+                  <div>
+                    <p className="mb-1.5 flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-faint">
+                      <MessageCircle className="h-3 w-3" aria-hidden="true" />
+                      WhatsApp
+                    </p>
+                    <CopyField
+                      value={site.whatsapp.username}
+                      display={`@${site.whatsapp.username}`}
+                      href={site.whatsapp.url}
+                      external
+                      label="WhatsApp username"
+                    />
+                    <p className="mt-2 text-xs text-faint">
+                      Opens a chat with me directly.
+                    </p>
+                  </div>
                 </div>
               </Reveal>
 
@@ -83,7 +109,7 @@ export default function Contact() {
                   Or send a message here
                 </h3>
                 <p className="mb-6 mt-1 text-xs text-faint">
-                  Fields are validated before anything is sent.
+                  Every field is checked before anything is sent.
                 </p>
                 <ContactForm />
               </div>

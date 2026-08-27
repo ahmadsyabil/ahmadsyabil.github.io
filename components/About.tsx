@@ -13,7 +13,7 @@ export default function About() {
           id="about-heading"
           label="About"
           title={about.headline}
-          description="A short version of who I am and what I reach for when I open an editor."
+          description="A short version of who I am and what I work with."
         />
 
         <div className="mt-14 grid gap-12 lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.05fr)] lg:gap-16">
@@ -28,8 +28,8 @@ export default function About() {
             <Reveal delay={about.paragraphs.length * 90}>
               <blockquote className="mt-8 rounded-2xl border-l-2 border-accent bg-elevated/70 px-5 py-4">
                 <p className="text-pretty text-sm italic leading-relaxed text-muted">
-                  &ldquo;Understanding the problem properly is most of the work. The code is what&rsquo;s
-                  left over.&rdquo;
+                  &ldquo;Understanding the problem properly is most of the work. The code is what
+                  is left over.&rdquo;
                 </p>
               </blockquote>
             </Reveal>

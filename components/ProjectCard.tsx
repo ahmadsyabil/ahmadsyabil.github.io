@@ -89,7 +89,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         {!hasLinks && (
           <p className="inline-flex items-center gap-1.5 text-xs text-faint">
             <Lock className="h-3.5 w-3.5" aria-hidden="true" />
-            Code not public — happy to walk through it on request
+            Code is not public. Happy to walk through it on request.
           </p>
         )}
       </footer>

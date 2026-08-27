@@ -46,9 +46,9 @@ export default function Hero() {
 
             <Reveal delay={220}>
               <p className="mt-5 max-w-xl text-pretty text-base leading-relaxed text-muted sm:text-lg">
-                Computer Science graduate with 38 weeks of internship experience across banking and
-                public-sector IT. I build full-stack web and mobile systems, and I train models that
-                have to justify their numbers.
+                Computer Science graduate with 38 weeks of internship experience in banking and
+                public sector IT. I build web and mobile systems. I also train machine learning
+                models and check that the numbers actually hold up.
               </p>
             </Reveal>
 

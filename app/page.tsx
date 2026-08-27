@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import Hero from '@/components/Hero';
 import Navbar from '@/components/Navbar';
 import Projects from '@/components/Projects';
+import Roles from '@/components/Roles';
 import ScrollProgress from '@/components/ScrollProgress';
 
 export default function HomePage() {
@@ -16,6 +17,7 @@ export default function HomePage() {
       <main id="main">
         <Hero />
         <About />
+        <Roles />
         <Projects />
         <Experience />
         <Certifications />

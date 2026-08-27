@@ -32,7 +32,7 @@ export default function ContactForm() {
     const next: Errors = {};
     if (values.name.trim().length < 2) next.name = 'Please enter your name.';
     if (!EMAIL_RE.test(values.email.trim())) next.email = 'Please enter a valid email address.';
-    if (values.message.trim().length < 10) next.message = 'A little more detail would help — 10 characters minimum.';
+    if (values.message.trim().length < 10) next.message = 'Please add a little more detail. Ten characters minimum.';
     return next;
   };
 
@@ -61,7 +61,7 @@ export default function ContactForm() {
     }
 
     const subject = encodeURIComponent(`Portfolio enquiry from ${values.name.trim()}`);
-    const body = encodeURIComponent(`${values.message.trim()}\n\n— ${values.name.trim()} (${values.email.trim()})`);
+    const body = encodeURIComponent(`${values.message.trim()}\n\nFrom: ${values.name.trim()} (${values.email.trim()})`);
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
     setStatus('sent');
   };
@@ -150,7 +150,7 @@ export default function ContactForm() {
         <p id="form-status" role="status" aria-live="polite" className="text-sm">
           {status === 'sent' && (
             <span className="text-emerald-500">
-              {FORM_ENDPOINT ? 'Thanks — I&rsquo;ll reply shortly.' : 'Your mail app should now be open.'}
+              {FORM_ENDPOINT ? 'Thanks. I will reply shortly.' : 'Your mail app should now be open.'}
             </span>
           )}
           {status === 'error' && (

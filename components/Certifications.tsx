@@ -11,10 +11,10 @@ const TIER_ICON: Record<Certification['tier'], LucideIcon> = {
 };
 
 const TIER_BLURB: Record<Certification['tier'], string> = {
-  Professional: 'Externally assessed industry credentials.',
+  Professional: 'Assessed by an outside body.',
   'Technical & AI': 'Applied technical and AI sessions.',
-  'Academic Skills': 'Research, literacy and communication training.',
-  Participation: 'Programmes and events attended.',
+  'Academic Skills': 'Research and communication training.',
+  Participation: 'Programmes and events I attended.',
 };
 
 export default function Certifications() {
@@ -33,8 +33,8 @@ export default function Certifications() {
         <SectionHeading
           id="certifications-heading"
           label="Certifications"
-          title="Credentials, training and programmes."
-          description={`${certifications.length} certificates, grouped so the externally assessed ones sit at the top.`}
+          title="Credentials and training."
+          description={`${certifications.length} certificates. The ones assessed by an outside body are at the top.`}
         />
 
         <div className="mt-14 space-y-12">

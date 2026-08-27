@@ -19,11 +19,11 @@ const jetbrains = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.name} — ${site.role}`,
+    default: `${site.name} · ${site.role}`,
     template: `%s · ${site.name}`,
   },
   description:
-    'Computer Science graduate and software engineer in Malaysia. Full-stack web and mobile development, machine learning and data work. 38 weeks of industry internship experience.',
+    'Computer Science graduate and software engineer based in Malaysia. I build web and mobile systems and work with machine learning and data. 38 weeks of internship experience.',
   keywords: [
     'Ahmad Syabil',
     'Software Engineer Malaysia',
@@ -40,9 +40,9 @@ export const metadata: Metadata = {
     locale: 'en_MY',
     url: site.url,
     siteName: site.name,
-    title: `${site.name} — ${site.role}`,
+    title: `${site.name} · ${site.role}`,
     description:
-      'Full-stack web and mobile development, machine learning and data work. Based in Gombak, Selangor.',
+      'I build web and mobile systems and work with machine learning and data. Based in Gombak, Selangor.',
     images: [
       {
         // Dedicated 1200x630 landscape crop — the portrait hero image gets
@@ -50,14 +50,14 @@ export const metadata: Metadata = {
         url: `${site.url}/og.jpg`,
         width: 1200,
         height: 630,
-        alt: `${site.fullName} — ${site.role}`,
+        alt: `${site.fullName}, ${site.role}`,
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: `${site.name} — ${site.role}`,
-    description: 'Software Engineer & AI/Data Enthusiast based in Malaysia.',
+    title: `${site.name} · ${site.role}`,
+    description: 'Software engineer and AI enthusiast based in Malaysia.',
     images: [`${site.url}/og.jpg`],
   },
   robots: { index: true, follow: true },

@@ -16,6 +16,12 @@ export const site = {
     github: 'https://github.com/ahmadsyabil',
     linkedin: 'https://www.linkedin.com/in/ahmad-syabil-1084823a4',
   },
+  // wa.me resolves usernames, so this links straight to a chat without
+  // publishing a phone number.
+  whatsapp: {
+    username: 'ahmdsyabil',
+    url: 'https://wa.me/ahmdsyabil',
+  },
 } as const;
 
 /** Words cycled by the typewriter in the hero. */
@@ -28,16 +34,16 @@ export const rotatingRoles: string[] = [
 
 export const heroStats: { value: string; label: string }[] = [
   { value: '38', label: 'Weeks of industry internship' },
-  { value: '3.51', label: 'CGPA, BSc Computer Science' },
+  { value: '3.51', label: 'CGPA in Computer Science' },
   { value: '3x', label: "Dean's List awards" },
 ];
 
 export const about = {
   headline: 'I like watching a manual process disappear.',
   paragraphs: [
-    "I'm a Computer Science graduate from UiTM (CGPA 3.51, August 2026) with 38 weeks of internship experience across two Malaysian organisations — a national bank and a state economic development corporation.",
-    "At Agrobank I found a department tracking every change request in a 24-column shared spreadsheet with no access control and no record of who changed what. I mapped the process, then designed and built a full-stack replacement in Next.js, Prisma and SQLite with role-based access, a five-stage approval pipeline and an audit trail.",
-    "Before that, halfway through a placement at PKINK, I had never touched Flutter. I taught myself the framework and shipped a cross-platform file-tracking app backed by a REST API. That gap between how something works and how it could work is the part of this job I actually enjoy.",
+    "I am a Computer Science graduate from UiTM. I finished in August 2026 with a CGPA of 3.51. Before that I did two internships that added up to 38 weeks. One was at a national bank and the other at a state development corporation.",
+    "At Agrobank the department tracked every change request in a shared spreadsheet with 24 columns. Nobody could tell who had changed what. I mapped out how the process actually worked and then built a replacement in Next.js. It had proper logins, an approval flow with five stages and a full history of every edit.",
+    "At PKINK I was halfway through the placement and had never used Flutter. I taught myself the framework and shipped a file tracking app with a REST API behind it. Closing the gap between how something works and how it should work is the part of this job I enjoy most.",
   ],
 } as const;
 
@@ -103,18 +109,18 @@ export const projects: Project[] = [
   {
     slug: 'change-request-system',
     title: 'Change Request Management System',
-    context: 'Agrobank — IT Service Management',
+    context: 'Agrobank, IT Service Management',
     year: '2026',
     category: 'Full-Stack',
     problem:
-      'The department tracked every change request in a manual 24-column spreadsheet. No access control, no approval trail, and no reliable answer to who changed what.',
+      'The department tracked every change request in a spreadsheet with 24 columns. There was no access control and no record of who had changed what.',
     solution:
-      'A full-stack web system replacing the spreadsheet: authenticated role-based access across three user groups, a five-section intake form with schema validation, automated reference numbering and a five-stage approval pipeline with persisted status history.',
+      'A web system that replaced the spreadsheet. It has logins with three permission levels, an intake form that validates what you type, automatic reference numbers and an approval flow with five stages that keeps the full status history.',
     highlights: [
-      'CRUD REST endpoints over a Prisma ORM layer with three-field filtering and 50-row server-side pagination',
-      'Route protection and permission-scoped views so each role sees only its own data',
-      'Frozen identifier columns during horizontal scroll, built with custom Tailwind overrides',
-      'Unit tested across every component layer, then verified end to end in a local runtime',
+      'CRUD REST endpoints on a Prisma layer with filtering across three fields and server side pagination at 50 rows',
+      'Route protection so each role only ever sees its own data',
+      'Four identifier columns stay frozen while the table scrolls sideways',
+      'Unit tested every component layer and then verified the whole system locally',
     ],
     stack: ['Next.js', 'TypeScript', 'Prisma', 'SQLite', 'NextAuth.js', 'Tailwind CSS', 'Zod'],
     github: null,
@@ -128,13 +134,13 @@ export const projects: Project[] = [
     year: '2025',
     category: 'AI & Data',
     problem:
-      'Raw review text is noisy, inconsistent and unusable as a model input without a disciplined preprocessing pipeline.',
+      'Raw review text is messy and inconsistent. A model cannot learn anything useful from it until it has been cleaned properly.',
     solution:
-      'An end-to-end NLP pipeline over the Kaggle IMDb 50K corpus — tokenisation, stemming, lemmatisation and stop-word removal, then TF-IDF and Bag-of-Words feature engineering before a stratified train/test split.',
+      'A full NLP pipeline over the Kaggle IMDb 50K dataset. It handles tokenisation, stemming, lemmatisation and stop word removal. It then builds TF-IDF and Bag of Words features and splits the data for training and testing.',
     highlights: [
-      '83% classification accuracy with a Naive Bayes model',
-      'Evaluated on accuracy, precision, recall and F1-score rather than accuracy alone',
-      'Confusion-matrix analysis showed the model performed strongest on negative sentiment',
+      '83% accuracy using a Naive Bayes classifier',
+      'Measured accuracy, precision, recall and F1 rather than accuracy on its own',
+      'A confusion matrix showed the model was strongest on negative sentiment',
     ],
     stack: ['Python', 'scikit-learn', 'NLTK', 'TF-IDF', 'Naive Bayes'],
     github: null,
@@ -148,13 +154,13 @@ export const projects: Project[] = [
     year: '2025 – 2026',
     category: 'AI & Data',
     problem:
-      'Classifying MRI scans by disease stage is a high-dimensional visual task where hand-engineered features fall short.',
+      'Sorting MRI scans by disease stage is a hard visual task. Rules written by hand do not cope with it well.',
     solution:
-      'A convolutional neural network trained on a preprocessed MRI dataset and served behind a Flask web interface that accepts an uploaded scan and returns a prediction.',
+      'A convolutional neural network trained on a cleaned MRI dataset. A Flask interface takes an uploaded scan and returns a prediction.',
     highlights: [
-      'Validated against acceptance criteria defined before development started',
-      'Image preprocessing and augmentation pipeline built ahead of training',
-      'Academic prototype — not clinically validated or approved for diagnostic use',
+      'Checked against acceptance criteria that were written before development started',
+      'Built the preprocessing and augmentation pipeline before any training began',
+      'This is an academic prototype. It is not clinically validated and not approved for diagnosis.',
     ],
     stack: ['Python', 'TensorFlow', 'CNN', 'Flask', 'NumPy'],
     github: null,
@@ -164,18 +170,18 @@ export const projects: Project[] = [
   {
     slug: 'file-scanner',
     title: 'File Scanner Mobile Application',
-    context: 'PKINK — Industrial Training',
+    context: 'PKINK Industrial Training',
     year: '2024',
     category: 'Mobile',
     problem:
-      'Staff walked to a physical counter to ask where a file was. There was no way to look a record up remotely.',
+      'Staff had to walk to a counter to ask where a file was. There was no way to check a record remotely.',
     solution:
-      'A cross-platform mobile app across three integrated modules — authentication, QR and barcode scanning, and profile management — on a providers-based state architecture, backed by a REST API to a MySQL database.',
+      'A cross platform mobile app built from three modules. It covers login, QR and barcode scanning and profile management. A REST API connects it to a MySQL database.',
     highlights: [
-      'Self-taught Flutter and Dart mid-placement, migrating an MIT App Inventor prototype to a production-style build',
-      'REST API integration verified with a Dart integration test before rollout',
-      'Debugged a multi-day integration failure spanning all three modules by tracing data flow across the codebase',
-      'Interface layouts and user journeys designed in Figma before implementation',
+      'Taught myself Flutter and Dart during the placement and rebuilt an MIT App Inventor prototype properly',
+      'Tested the REST API integration in Dart before rollout',
+      'Traced a bug that had run for days across all three modules and fixed it',
+      'Designed the screens in Figma before writing any code',
     ],
     stack: ['Flutter', 'Dart', 'REST API', 'MySQL', 'XAMPP', 'Figma'],
     github: null,
@@ -186,18 +192,19 @@ export const projects: Project[] = [
   /* ------------------------- ARCHIVE ------------------------- */
   {
     slug: 'cross-modal-pantun',
-    title: 'Cross-Modal Pantun Retrieval — Business Case',
+    title: 'Cross-Modal Pantun Retrieval Business Case',
     context: 'Software Project Management (CSC575)',
     year: 'Jan 2026',
     category: 'Analysis & Design',
     problem:
-      'A proposed OCR and vector-search platform for matching scanned images to semantically related Malay pantun needed a defensible case before anyone funded it.',
+      'The team proposed a platform that matches a scanned image to a related Malay pantun. It needed a solid case before anyone would fund it.',
     solution:
-      'A full project charter and business case: as-is process, problem and opportunity analysis, proposed solution, scope, functional and non-functional requirements, and a Measurable Organisational Value framework.',
+      'A full project charter and business case. It sets out the current process, the problem, the proposed solution, the scope and the requirements. It also defines how the value would be measured once the system was live.',
     highlights: [
-      'Three-year financial model — RM 60,000 budget, NPV of RM 109,755, ROI inside 18 months',
-      'KPIs of 40% faster retrieval and 35% higher search accuracy',
-      'Work Breakdown Structure, Gantt chart, risk register and competitor benchmarking across four user segments',
+      'Three year financial model with a budget of RM 60,000 and a net present value of RM 109,755',
+      'Return on investment inside 18 months',
+      'Targets of 40% faster retrieval and 35% better search accuracy',
+      'Work breakdown structure, Gantt chart, risk register and a review of four competitor segments',
     ],
     stack: ['MOV Framework', 'NPV & ROI Modelling', 'WBS', 'Gantt', 'Risk Register', 'FAISS', 'OCR'],
     github: null,
@@ -211,27 +218,11 @@ export const projects: Project[] = [
     year: '2025',
     category: 'Full-Stack',
     problem:
-      'The faculty final-year-project workflow ran on email and paper, with no shared view of supervisor allocation.',
+      'The faculty ran final year project allocation over email and paper. Nobody could see which supervisors were already taken.',
     solution:
-      'A web system supporting three roles — Administrator, Supervisor and Student — covering supervisor requests, proposal submission, listings and profile management, on a schema normalised to third normal form.',
-    highlights: ['Authored the system objectives, user site map, interface design and database documentation'],
+      'A web system built for three roles. Administrators, supervisors and students each get their own view. It handles supervisor requests, proposal submission, listings and profiles on a normalised schema.',
+    highlights: ['Wrote the objectives, the site map, the interface design and the database documentation'],
     stack: ['PHP', 'MySQL', 'JavaScript', 'Bootstrap'],
-    github: null,
-    demo: null,
-    featured: false,
-  },
-  {
-    slug: 'brain-tumour-detection',
-    title: 'Brain Tumour Detection from MRI',
-    context: 'Image Processing (CSC566)',
-    year: '2025',
-    category: 'AI & Data',
-    problem:
-      'Tumour regions in MRI scans need to be isolated from surrounding tissue before any classification is meaningful.',
-    solution:
-      'A GUI prototype applying segmentation, morphological operations and feature extraction to flag tumour presence from an uploaded scan.',
-    highlights: ['Academic prototype — not clinically validated'],
-    stack: ['Python', 'Image Segmentation', 'Feature Extraction'],
     github: null,
     demo: null,
     featured: false,
@@ -239,35 +230,19 @@ export const projects: Project[] = [
   {
     slug: 'library-management-system',
     title: '5M Library Management System',
-    context: 'Information System Development (ISP250) — Role: System Analyst',
+    context: 'Information System Development (ISP250). Role: System Analyst',
     year: '2023',
     category: 'Analysis & Design',
     problem:
-      'A five-member team needed a documented, testable specification before any code was written.',
+      'A team of five needed a written specification they could test against before anyone started coding.',
     solution:
-      'Appointed system analyst and system supervisor, owning solution evaluation and selection and approving all project documentation.',
+      'I worked as the system analyst and supervisor. I chose the solution the team would build and signed off all the project documentation.',
     highlights: [
-      'Authored the responsibilities matrix, feasibility study, system objectives and user requirements',
-      'Specified functional and non-functional requirements and data flow diagrams',
-      'Wrote test cases, tracing each one back to a stated requirement',
+      'Wrote the responsibilities matrix, the feasibility study, the objectives and the user requirements',
+      'Specified the functional and non functional requirements and drew the data flow diagrams',
+      'Wrote the test cases and traced each one back to a requirement',
     ],
     stack: ['Requirements Analysis', 'Feasibility Study', 'DFD', 'Test Case Design'],
-    github: null,
-    demo: null,
-    featured: false,
-  },
-  {
-    slug: 'heritage-tales',
-    title: 'Heritage Tales System',
-    context: 'Requirements Analysis (CSC577)',
-    year: 'Nov 2024',
-    category: 'Analysis & Design',
-    problem:
-      'Malay Hikayat and folklore are scattered across physical collections with no searchable digital record.',
-    solution:
-      'A requirements specification for a digital archive — current process analysis, problem statement, objectives, scope, system features and use case diagram.',
-    highlights: [],
-    stack: ['Requirements Elicitation', 'Use Case Modelling', 'Scope Definition'],
     github: null,
     demo: null,
     featured: false,
@@ -279,93 +254,14 @@ export const projects: Project[] = [
     year: 'Oct 2024 – Feb 2025',
     category: 'Database',
     problem:
-      'The cafe ran a manual, file-based ordering process with duplicated records and no way to query sales.',
+      'The cafe took orders on paper. Records were duplicated and there was no way to query sales.',
     solution:
-      'A relational database design for the ordering process — entity relationship diagram, dependency diagram and a schema normalised to third normal form, modelled in Oracle SQL Developer.',
+      'A relational database for the ordering process. I drew the entity relationship diagram and the dependency diagram, then normalised the schema to third normal form in Oracle SQL Developer.',
     highlights: [
-      'Wrote ten non-trivial SQL queries covering joins, aggregation and sub-queries against the live schema',
+      'Wrote ten SQL queries covering joins, aggregation and sub queries against the live schema',
       'Built the data model in Oracle SQL Developer Data Modeler',
     ],
     stack: ['Oracle SQL Developer', 'SQL', 'ERD', '3NF Normalisation', 'PHP'],
-    github: null,
-    demo: null,
-    featured: false,
-  },
-  {
-    slug: 'e-shop',
-    title: 'E-Shop E-Commerce Website',
-    context: 'Web and Mobile Application (CSC264) — Group Project',
-    year: '2023',
-    category: 'Full-Stack',
-    problem: 'Small sellers needed an online storefront without the cost of a physical shop.',
-    solution:
-      'An e-commerce site with customer registration, product browsing, cart management, quantity editing and a checkout flow supporting online banking and cash on delivery, plus an administrator view for stock and promotions.',
-    highlights: ['Invoice generation on successful payment as proof of transaction'],
-    stack: ['HTML', 'CSS', 'JavaScript', 'PHP', 'MySQL'],
-    github: null,
-    demo: null,
-    featured: false,
-  },
-  {
-    slug: 'contact-manager',
-    title: 'Contact Management Mobile App',
-    context: 'Web and Mobile Application (CSC264) — Individual Project',
-    year: '2023',
-    category: 'Mobile',
-    problem:
-      'Paper systems and basic phonebook software fall short once the number of contacts grows.',
-    solution:
-      'A mobile contact manager storing phone numbers, emails, social links and organisation details, with full create, browse, edit and delete operations backed by a PHP and MySQL API.',
-    highlights: ['Built solo, front end to database'],
-    stack: ['MIT App Inventor', 'PHP', 'MySQL'],
-    github: null,
-    demo: null,
-    featured: false,
-  },
-  {
-    slug: 'university-research-db',
-    title: 'University Research Database',
-    context: 'Database Management Systems (ICT200)',
-    year: '2022',
-    category: 'Database',
-    problem:
-      'The faculty recorded professors, graduate students, advisors, projects and sponsors on paper. A lost file meant redoing the whole process.',
-    solution:
-      'A relational database replacing the paper record, modelling professors, multi-level student advisors, departments, projects, sponsors and budgets, with the entity relationships resolved before implementation.',
-    highlights: [],
-    stack: ['SQL', 'ERD', 'Relational Modelling', 'Normalisation'],
-    github: null,
-    demo: null,
-    featured: false,
-  },
-  {
-    slug: 'clinic-management',
-    title: 'Clinic Management System',
-    context: 'Fundamentals of Data Structures (CSC248)',
-    year: 'Feb 2023',
-    category: 'Fundamentals',
-    problem:
-      'Nurses manually directed patient flow between registration, treatment and pharmacy, with no visibility of queue position.',
-    solution:
-      'A patient-flow system implementing a queue for the waiting list and a stack for treatment records, tracking each patient from registration through to pharmacy.',
-    highlights: ['Chosen scenario deliberately exercised both data structures in one realistic workflow'],
-    stack: ['Java', 'Queue', 'Stack', 'Data Structures'],
-    github: null,
-    demo: null,
-    featured: false,
-  },
-  {
-    slug: 'properties-of-relation',
-    title: 'Properties of Relation Analyser',
-    context: 'Discrete Structures (CSC510)',
-    year: '2024',
-    category: 'Fundamentals',
-    problem:
-      'Determining whether a relation is reflexive, symmetric or transitive by hand is slow and error-prone.',
-    solution:
-      'A browser tool that reads a set and its relation, classifies it as reflexive, symmetric and/or transitive, and generates the reflexive, symmetric and transitive closures.',
-    highlights: ['Implemented the closure algorithms directly rather than calling a library'],
-    stack: ['JavaScript', 'HTML', 'Set Theory', 'Algorithm Design'],
     github: null,
     demo: null,
     featured: false,
@@ -388,9 +284,9 @@ export const CERT_TIERS = [
 
 export const certifications: Certification[] = [
   {
-    title: 'CCNA 200-301 — Implementing and Administering Cisco Solutions',
+    title: 'CCNA 200-301 Implementing and Administering Cisco Solutions',
     issuer: 'Nexperts Academy Sdn Bhd',
-    date: '11 – 25 Aug 2023',
+    date: '11 to 25 Aug 2023',
     tier: 'Professional',
   },
   {
@@ -406,13 +302,13 @@ export const certifications: Certification[] = [
     tier: 'Technical & AI',
   },
   {
-    title: 'Sharing Session with Computer Science Expert — AI in Real-World Application',
+    title: 'Sharing Session with a Computer Science Expert on AI in Real-World Applications',
     issuer: 'Faculty of Computer and Mathematical Sciences, UiTM Terengganu',
     date: '7 Jan 2026',
     tier: 'Technical & AI',
   },
   {
-    title: 'Online Database for Literature — Information Literacy Skill Module',
+    title: 'Online Database for Literature (Information Literacy Skill Module)',
     issuer: 'Perpustakaan Tun Abdul Razak, UiTM Shah Alam',
     date: '7 Apr 2025',
     tier: 'Academic Skills',
@@ -424,14 +320,14 @@ export const certifications: Certification[] = [
     tier: 'Academic Skills',
   },
   {
-    title: 'Seminar MUET: Tips on Speaking & Writing',
+    title: 'Seminar MUET: Tips on Speaking and Writing',
     issuer: 'DiPAC, UiTM Cawangan Kelantan',
     date: '12 Jun 2023',
     tier: 'Academic Skills',
   },
   {
     title: 'Career Guide for Undergraduates: The First Step Towards Success After Graduation',
-    issuer: 'Alumni Committee & Modelitic Club, UiTM Terengganu',
+    issuer: 'Alumni Committee and Modelitic Club, UiTM Terengganu',
     date: '26 Oct 2024',
     tier: 'Participation',
   },
@@ -449,6 +345,59 @@ export const certifications: Certification[] = [
   },
 ];
 
+export type TargetRole = {
+  title: string;
+  /** lucide-react icon name, resolved in components/Roles.tsx */
+  icon: 'Code2' | 'ChartNoAxesColumn' | 'Server' | 'ShieldCheck' | 'ClipboardList' | 'Workflow';
+  blurb: string;
+  evidence: string[];
+};
+
+export const targetRoles: TargetRole[] = [
+  {
+    title: 'Software Developer',
+    icon: 'Code2',
+    blurb:
+      'I build web and mobile systems end to end. Next.js and React on the front, Prisma and REST APIs behind them.',
+    evidence: ['Change Request System', 'File Scanner app', 'FYP Management System'],
+  },
+  {
+    title: 'Data, Analytics and AI',
+    icon: 'ChartNoAxesColumn',
+    blurb:
+      'I clean data, model it and train classifiers. I also check the results properly instead of quoting accuracy on its own.',
+    evidence: ['Sentiment analysis at 83%', 'CNN on MRI scans', 'SQL and schema design'],
+  },
+  {
+    title: 'IT Support and Infrastructure',
+    icon: 'Server',
+    blurb:
+      'I spent 14 weeks inside a bank IT service management department. I am CCNA 200-301 certified.',
+    evidence: ['Agrobank ITSM placement', 'CCNA 200-301', 'Helpdesk fixes at PKINK'],
+  },
+  {
+    title: 'QA and Security',
+    icon: 'ShieldCheck',
+    blurb:
+      'I write test cases that trace back to a stated requirement, and I unit test every layer before saying something works.',
+    evidence: ['Traceable test cases', 'Unit testing across layers', 'Role based access control'],
+  },
+  {
+    title: 'Business Analyst',
+    icon: 'ClipboardList',
+    blurb:
+      'I gather requirements, map how a process actually runs today, and put real numbers behind the business case.',
+    evidence: ['5 enhancement projects', 'Business case with NPV', 'As-is process mapping'],
+  },
+  {
+    title: 'Business Systems Analyst',
+    icon: 'Workflow',
+    blurb:
+      'The bridge role. I can write the specification with the business and then build the thing myself.',
+    evidence: ['URS documentation', 'ERD and 3NF design', 'Gap analysis'],
+  },
+];
+
 export type TimelineEntry = {
   period: string;
   title: string;
@@ -463,48 +412,49 @@ export const timeline: TimelineEntry[] = [
     title: 'BSc (Hons) Computer Science',
     org: 'Universiti Teknologi MARA, Terengganu',
     kind: 'education',
-    points: ["Graduated with CGPA 3.51", "Dean's List in 3 semesters"],
+    points: ['Graduated with a CGPA of 3.51', "Dean's List in 3 semesters"],
   },
   {
-    period: 'Mar – Jul 2026',
+    period: 'Mar to Jul 2026',
     title: 'Software Development Intern',
-    org: 'Agrobank — IT Service Management Department',
+    org: 'Agrobank, IT Service Management Department',
     kind: 'work',
     points: [
-      'Built a full-stack change request system in Next.js, Prisma and SQLite, replacing a 24-column manual spreadsheet',
-      'Implemented NextAuth authentication with role-based authorisation across three user roles',
-      'Elicited requirements across five enhancement projects and authored User Requirements Specification content',
+      'Built a change request system in Next.js and Prisma that replaced a spreadsheet with 24 columns',
+      'Added logins with three permission levels so each role saw only its own data',
+      'Gathered requirements across five enhancement projects and wrote them up for the delivery team',
     ],
   },
   {
     period: '2025',
-    title: 'Programme Leader — AI & Cybersecurity Webinar Series',
+    title: 'Programme Leader for the AI and Cybersecurity Webinar Series',
     org: 'UiTM Terengganu',
     kind: 'award',
-    points: ['Led four committees across technical operations, promotion, certification and event delivery'],
+    points: ['Led four committees covering technical operations, promotion, certification and event delivery'],
   },
   {
-    period: 'Sep 2023 – Feb 2024',
+    period: 'Sep 2023 to Feb 2024',
     title: 'Mobile Development Intern',
     org: 'Perbadanan Kemajuan Iktisad Negeri Kelantan (PKINK)',
     kind: 'work',
     points: [
-      'Self-taught Flutter and Dart mid-placement and shipped a three-module cross-platform application',
-      'Built and integrated a REST API between the Flutter client and a MySQL database',
-      'Resolved two further defects in the organisation helpdesk system',
+      'Taught myself Flutter and Dart during the placement and shipped an app built from three modules',
+      'Built a REST API between the app and a MySQL database',
+      'Fixed two further bugs in the helpdesk system the organisation used',
     ],
   },
   {
-    period: 'Aug 2021 – Jan 2024',
+    period: 'Aug 2021 to Jan 2024',
     title: 'Diploma in Computer Science',
     org: 'Universiti Teknologi MARA, Kelantan',
     kind: 'education',
-    points: ["CGPA 3.31", "Dean's List in 2 semesters"],
+    points: ['CGPA of 3.31', "Dean's List in 2 semesters"],
   },
 ];
 
 export const navLinks = [
   { href: '#about', label: 'About' },
+  { href: '#roles', label: 'Roles' },
   { href: '#work', label: 'Work' },
   { href: '#experience', label: 'Experience' },
   { href: '#certifications', label: 'Certifications' },
